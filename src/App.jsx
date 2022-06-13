@@ -1,13 +1,17 @@
-import './App.scss';
+import "./App.scss";
 
-import beers from "./data/beers"
+import Nav from "./components/Nav/Nav";
+import Home from "./containers/Home/Home";
+
+import beers from "./data/beers";
 
 function App() {
-  return (
-    <div className="App">
-      
-    </div>
-  );
+    return (
+        <div className="App">
+            <Nav />
+            <Home array={beers} />
+        </div>
+    );
 }
 
 export default App;
