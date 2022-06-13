@@ -9,7 +9,7 @@ const Card = (props) => {
         image_url: imageURL,
         name,
         abv,
-        description,
+        // description,
         tagline,
         first_brewed: firstBrewed,
         ph,
@@ -23,9 +23,7 @@ const Card = (props) => {
             <p className="card__first-brewed">First Brewed: {firstBrewed}</p>
             <p className="card__alcohol-percentage">Alcohol content: {abv}%</p>
             <p className="card__acidity">Acidity: {ph}ph</p>
-            <p className="card__description">
-                Description: <br /> {description}
-            </p>
+            
         </div>
     );
 };
