@@ -8,8 +8,8 @@ const Home = (props) => {
     const { array } = props;
 
     return (
-        <div>
-            This is the Home Page
+        <div className="home">
+            <h1 className="home__heading">Beers!</h1>
             <CardList array={array} />
         </div>
     );

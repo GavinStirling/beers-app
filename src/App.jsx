@@ -1,6 +1,6 @@
 import "./App.scss";
 
-import Nav from "./components/Nav/Nav";
+import Nav from "./containers/Nav/Nav";
 import Home from "./containers/Home/Home";
 
 import beers from "./data/beers";
