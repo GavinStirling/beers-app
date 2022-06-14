@@ -1,5 +1,5 @@
 import "./App.scss";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import Nav from "./containers/Nav/Nav";
 import Home from "./containers/Home/Home";
