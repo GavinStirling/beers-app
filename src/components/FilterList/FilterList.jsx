@@ -4,13 +4,16 @@ import "./FilterList.scss";
 
 import Filter from "../Filter/Filter";
 
-const FilterList = () => {
+const FilterList = (props) => {
+    const { alcohol, classic, acidity } = props;
+
     return (
         <div>
-            FilterList
-            <Filter />
-            <Filter />
-            <Filter />
+            <p>Filters:</p>
+
+            <Filter id="alcohol" label="High Alcohol" onChange={alcohol} />
+            <Filter id="classic" label="Classic Range" onChange={classic} />
+            <Filter id="acidity" label="High Acidity" onChange={acidity} />
         </div>
     );
 };

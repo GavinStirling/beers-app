@@ -1,11 +1,16 @@
-import React from 'react'
+import React from "react";
 
-import "./Filter.scss"
+import "./Filter.scss";
 
-const Filter = () => {
-  return (
-    <div>Filter</div>
-  )
-}
+const Filter = (props) => {
+    const { id, label, value, onChange } = props;
 
-export default Filter
+    return (
+        <div className="filter">
+            <label htmlFor={id}> {label}</label>
+            <input id={id} type="checkbox" value={value} onChange={onChange}  />
+        </div>
+    );
+};
+
+export default Filter;

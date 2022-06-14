@@ -7,22 +7,62 @@ import Home from "./containers/Home/Home";
 import beers from "./data/beers";
 
 function App() {
-    const [searchTerm, setSearchTerm] = useState("");
-
     const [array, setArray] = useState(beers);
+    const [searchTerm, setSearchTerm] = useState("");
+    const [alcoholFilter, setAlcoholFilter] = useState(false);
+    const [classicFilter, setClassicFilter] = useState(false);
+    const [acidityFilter, setAcidityFilter] = useState(false);
 
-    const getBeers = async (searchTerm) => {
-        let url = "https://api.punkapi.com/v2/beers";
+    // { alcohol: 6, active: false },
+    // { classic: 2010, active: false },
+    // { acidity: 4, active: false }
 
-        if (searchTerm != ""){
-            const temp = searchTerm.split(" ");
-            const cleanSearchTerm = temp.join("_")
-            url+= `?beer_name=${cleanSearchTerm.toLowerCase()}`
+    const getBeers = async (
+        searchTerm,
+        alcoholFilter,
+        classicFilter,
+        acidityFilter
+    ) => {
+        const globalArray = [];
+
+        for (let index = 0; index < 5; index++) {
+            let url = `https://api.punkapi.com/v2/beers?page=${
+                index + 1
+            }&per_page=80`;
+
+            if (searchTerm != "") {
+                const temp = searchTerm.split(" ");
+                const cleanSearchTerm = temp.join("_");
+                url += `&beer_name=${cleanSearchTerm.toLowerCase()}`;
+            }
+
+            if (alcoholFilter) {
+                url += `&abv_gt=6`;
+            }
+
+            if (classicFilter) {
+                url += `&brewed_before=01-2010`;
+            }
+
+            const res = await fetch(url);
+            const data = await res.json();
+
+            data.forEach((beer)=>{
+                globalArray.push(beer);
+                console.log(array)
+            })
+
         }
 
-        const res = await fetch(url);
-        const data = await res.json();
-        setArray(data);
+        if (acidityFilter) {
+            const temp = globalArray.filter((beer) => {
+                return beer.ph < 4;
+            });
+            setArray(temp);
+            return;
+        }
+
+        setArray(globalArray);
     };
 
     const handleSearchInput = (event) => {
@@ -31,42 +71,43 @@ function App() {
         }
     };
 
-    // const search = (event) => {
-    //     const term = event.target.value;
-    //     console.log(term);
-    //     if (term != "") {
-    //         setActiveSearch(true);
-    //         const results = beers.filter((beer) => {
-    //             return beer.name.toLowerCase().includes(term.toLowerCase());
-    //         });
-    //         console.log(activeSearch, results);
-    //         return results;
-    //     } else {
-    //         console.log(activeSearch);
-    //         setActiveSearch(false);
-    //         return beers;
-    //     }
-    // };
+    const handleAlcoholFilter = (event) => {
+        if (event.target.checked) {
+            setAlcoholFilter(true);
+        } else if (!event.target.checked) {
+            setAlcoholFilter(false);
+        }
+    };
 
-    // const HomeJSX = (array) => {
-    //     return (
-    //         <>
-    //             <Home array={array} />
-    //         </>
-    //     );
-    // };
+    const handleClassicFilter = (event) => {
+        if (event.target.checked) {
+            setClassicFilter(true);
+        } else if (!event.target.checked) {
+            setClassicFilter(false);
+        }
+    };
+
+    const handleAcidityFilter = (event) => {
+        if (event.target.checked) {
+            setAcidityFilter(true);
+        } else if (!event.target.checked) {
+            setAcidityFilter(false);
+        }
+    };
 
     useEffect(() => {
-        getBeers(searchTerm);
-    }, [searchTerm]);
+        getBeers(searchTerm, alcoholFilter, classicFilter, acidityFilter);
+    }, [searchTerm, alcoholFilter, classicFilter, acidityFilter]);
 
     return (
         <div className="App">
-            <Nav search={handleSearchInput} />
-            {/* {activeSearch ? HomeJSX(search()) : HomeJSX(beers)} */}
-            {/* {activeSearch && <Home array={search()} />} */}
+            <Nav
+                search={handleSearchInput}
+                alcohol={handleAlcoholFilter}
+                classic={handleClassicFilter}
+                acidity={handleAcidityFilter}
+            />
             <Home array={array} />
-            {/* <Home array={search} /> */}
         </div>
     );
 }
