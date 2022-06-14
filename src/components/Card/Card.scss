@@ -1,29 +1,36 @@
 .card{
-    height: 20em;
+    height: 25em;
     width: 15em;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
 
-    border: 1px solid black;
+    border: 1px solid #A3BBAD;
+    border-radius: 25% 5%;
 
-    margin: 1em 0;
+    margin: 0;
+    padding: 1em;
+
+    color: black;
+
+    background-color: #A3BBAD;
 
     &__image {
-        height: 40%;
+        height: 30%;
         width: auto;
 
-        margin: 1em 0;
+        margin: 0.5em 0;
     }
 
     &__name {
         font-size: 1.5em;
-        font-weight: 700;
+        font-weight: 900;
     }
 
     &__tagline {
+        font-weight: 600;
         font-style: italic;
     }
 

@@ -8,8 +8,8 @@ const FilterList = (props) => {
     const { alcohol, classic, acidity } = props;
 
     return (
-        <div>
-            <p>Filters:</p>
+        <div className="filter-list">
+            <p className="filter-list__heading">Filters:</p>
 
             <Filter id="alcohol" label="High Alcohol" onChange={alcohol} />
             <Filter id="classic" label="Classic Range" onChange={classic} />

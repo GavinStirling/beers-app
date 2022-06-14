@@ -7,8 +7,9 @@ const Search = (props) => {
     
 
   return (
-    <div>
-        <input type="text" placeholder='Search by Name' onInput={search}/>
+    <div className='search'>
+      <label htmlFor="search">Search by Name:</label>
+        <input id='search' type="text" placeholder='Search by Name' onInput={search}/>
     </div>
   )
 }
