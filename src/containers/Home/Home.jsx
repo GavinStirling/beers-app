@@ -8,7 +8,7 @@ const Home = (props) => {
     const { array } = props;
 
     return (
-        <div className="home">
+        <div data-testid="home" className="home">
             <h1 className="home__heading">Beers!</h1>
             <CardList array={array} />
         </div>
