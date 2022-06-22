@@ -16,8 +16,8 @@ const Card = (props) => {
     } = beer;
 
     return (
-        <div className="card">
-            <img className="card__image" src={imageURL} alt="asd" />
+        <div data-testid="card" className="card">
+            <img className="card__image" src={imageURL} alt={name} />
             <p className="card__name"> {name} </p>
             <p className="card__tagline">{tagline}</p>
             <p className="card__first-brewed">First Brewed: {firstBrewed}</p>

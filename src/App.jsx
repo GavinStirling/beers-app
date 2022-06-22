@@ -6,7 +6,7 @@ import Home from "./containers/Home/Home";
 
 import beers from "./data/beers";
 
-function App() {
+const App = () => {
     const [array, setArray] = useState(beers);
     const [searchTerm, setSearchTerm] = useState("");
     const [alcoholFilter, setAlcoholFilter] = useState(false);
