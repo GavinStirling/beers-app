@@ -10,6 +10,8 @@ const CardList = (props) => {
     const CardListJSX = array.map((beer) => {
         if (beer["image_url"]){
             return <Card key={beer["id"]} beer={beer} />
+        } else {
+            return null;
         }
         
     })

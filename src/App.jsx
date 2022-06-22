@@ -30,7 +30,7 @@ function App() {
                 index + 1
             }&per_page=80`;
 
-            if (searchTerm != "") {
+            if (searchTerm !== "") {
                 const temp = searchTerm.split(" ");
                 const cleanSearchTerm = temp.join("_");
                 url += `&beer_name=${cleanSearchTerm.toLowerCase()}`;
@@ -66,7 +66,7 @@ function App() {
     };
 
     const handleSearchInput = (event) => {
-        if (event.target.value != "") {
+        if (event.target.value !== "") {
             setSearchTerm(event.target.value);
         }
     };
