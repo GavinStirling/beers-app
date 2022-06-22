@@ -22,7 +22,7 @@ The application displays cards showing the information from the beers which are 
 
 ### Here is the mobile version:
 
-![Beers! Mobile Version](./public/mobile-preview.png))
+![Beers! Mobile Version](./public/mobile-preview.png)
 
 ### Here is the desktop version:
 
